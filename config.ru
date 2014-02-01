@@ -27,7 +27,7 @@ post "/exceptional" do
 
   httpclient.post(
     ENV["EXCEPTIONAL_SLACK_URL"],
-    JSON.dump(text: text, channel: "@tom")
+    JSON.dump(text: text)
   )
 
   "ok"
