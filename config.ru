@@ -16,7 +16,8 @@ post "/exceptional" do
 
   name = JsonPath.on(json, "$..error.app.name").first
   environment = JsonPath.on(json, "$..error.environment").first
-  backtrace = JsonPath.on(json, "$..error.last_occurrence.backtrace")
+  backtrace = JsonPath.on(json, "$..error.last_occurrence.backtrace").first
+  backtrace = backtrace.reject{|l| l.include?('vendor') }.first(8)
   trigger_url = JsonPath.on(json, "$..error.last_occurrence.url").first
   request_method = JsonPath.on(json, "$..error.last_occurrence.request_method").first
   title = JsonPath.on(json, "$..error.title").first
