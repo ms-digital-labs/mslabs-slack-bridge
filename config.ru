@@ -4,9 +4,7 @@ Dotenv.load ".env.local", ".env"
 
 helpers do
   def httpclient
-    @httpclient ||= HTTPClient.new.tap{|c|
-      c.ssl_config.set_trust_ca("start.com.ca.txt")
-    }
+    @httpclient ||= HTTPClient.new
   end
 end
 
